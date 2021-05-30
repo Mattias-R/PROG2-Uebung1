@@ -28,16 +28,22 @@ public class PasswordValidator {
             return false;
     }
     public boolean passwordContainsSpecialLetter(String password){
-            char[] eq = {'(', ')','#','$','!','%','/','@'};
-
+            char[] eq = {'(', ')','#','$','!','%','/','@','?'};
+            boolean checkPass = false;
             for(int i = 0; i< password.length(); i++){
                 for(int k = 0; k< eq.length; k++){
                     if(password.charAt(i) == eq[k]){
-                        return true;
+                        checkPass = true;
                     }
                 }
             }
-        return false;
+        String pass = password.replaceAll("[()#$!%/@?]","");
+        for(int i = 0; i< pass.length(); i++){
+            if(Character.isLetterOrDigit(pass.charAt(i)) == false){
+                checkPass = false;
+            }
+        }
+        return checkPass;
     }
     public boolean passwordNumberRow(String password){
         // it is not necessary to compare numbers after length-2

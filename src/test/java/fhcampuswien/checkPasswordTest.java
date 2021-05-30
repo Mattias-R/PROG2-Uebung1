@@ -90,6 +90,12 @@ public class checkPasswordTest {
         PasswordValidator pw = new PasswordValidator();
         assertTrue(pw.checkPassword("meinNameistkarl!1337"));
     }
+    @Test
+    @DisplayName("return False if the password contains a wrong special Letter")
+    public void specialLetter3(){
+        PasswordValidator pw = new PasswordValidator();
+        assertFalse(pw.checkPassword("meinNameistkarl!+1337"));
+    }
 
 }
 
